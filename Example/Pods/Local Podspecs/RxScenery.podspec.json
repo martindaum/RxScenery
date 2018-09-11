@@ -1,0 +1,22 @@
+{
+  "name": "RxScenery",
+  "version": "0.1.0",
+  "summary": "A short description of RxScenery.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/martindaum/RxScenery",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "martindaum": "office@martindaum.com"
+  },
+  "source": {
+    "git": "https://github.com/martindaum/RxScenery.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RxScenery/Classes/**/*"
+}

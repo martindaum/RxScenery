@@ -1,0 +1,6 @@
+framework module RxScenery {
+  umbrella header "RxScenery-umbrella.h"
+
+  export *
+  module * { export * }
+}

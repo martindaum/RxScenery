@@ -1,0 +1,16 @@
+PODS:
+  - RxScenery (0.1.0)
+
+DEPENDENCIES:
+  - RxScenery (from `../`)
+
+EXTERNAL SOURCES:
+  RxScenery:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RxScenery: e85bef8c59e49bc88f1b686409d7a247283d3909
+
+PODFILE CHECKSUM: 803738a8069df26c8ea1e268ea366adbdc1690bb
+
+COCOAPODS: 1.5.3

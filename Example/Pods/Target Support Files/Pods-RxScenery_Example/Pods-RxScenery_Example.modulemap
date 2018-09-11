@@ -1,0 +1,6 @@
+framework module Pods_RxScenery_Example {
+  umbrella header "Pods-RxScenery_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

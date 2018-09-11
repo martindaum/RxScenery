@@ -1,0 +1,6 @@
+framework module Pods_RxScenery_Tests {
+  umbrella header "Pods-RxScenery_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
