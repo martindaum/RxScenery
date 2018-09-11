@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxScenery_Example' do
+  pod 'RxScenery', :path => '../'
+
+  target 'RxScenery_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
