@@ -1,8 +1,7 @@
 {
   "name": "RxScenery",
-  "version": "0.1.0",
-  "summary": "A short description of RxScenery.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "1.0.1",
+  "summary": "Scene transition library written in Swift",
   "homepage": "https://github.com/martindaum/RxScenery",
   "license": {
     "type": "MIT",
@@ -13,10 +12,16 @@
   },
   "source": {
     "git": "https://github.com/martindaum/RxScenery.git",
-    "tag": "0.1.0"
+    "tag": "1.0.1"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "RxScenery/Classes/**/*"
+  "swift_version": "4.2",
+  "source_files": "RxScenery/Classes/**/*",
+  "dependencies": {
+    "RxCocoa": [
+      "~> 4.0"
+    ]
+  }
 }
