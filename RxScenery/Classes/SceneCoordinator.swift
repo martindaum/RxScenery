@@ -74,7 +74,7 @@ extension SceneCoordinator {
     public func present(_ scene: SceneType, from viewController: UIViewController, animated: Bool, customizationClosure: ((UIViewController) -> Void)? = nil) -> Completable {
         let subject = PublishSubject<Void>()
         let nextViewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
-        customizationClosure?(viewController)
+        customizationClosure?(nextViewController)
         viewController.present(nextViewController, animated: animated, completion: {
             subject.onCompleted()
         })
