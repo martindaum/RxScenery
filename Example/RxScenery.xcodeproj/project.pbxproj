@@ -33,7 +33,7 @@
 		2B0FF5469669098AD46E213C /* Pods_RxScenery_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxScenery_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		328BB2F5AFDEBD99BB47CB45 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3BB95AD2EB4C79451FB1DB83 /* Pods_RxScenery_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxScenery_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DA8392814DEDDE45BCD7DF6 /* RxScenery.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxScenery.podspec; path = ../RxScenery.podspec; sourceTree = "<group>"; };
+		3DA8392814DEDDE45BCD7DF6 /* RxScenery.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxScenery.podspec; path = ../RxScenery.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* RxScenery_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxScenery_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

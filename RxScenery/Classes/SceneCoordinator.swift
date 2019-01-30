@@ -11,9 +11,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public protocol SceneType {
-    
-}
+public protocol UnwrappedViewController {}
+
+extension UINavigationController: UnwrappedViewController {}
+extension UITabBarController: UnwrappedViewController {}
+extension UISplitViewController: UnwrappedViewController {}
+
+public protocol SceneType {}
 
 public protocol SceneCreatorType {
     func createViewController(for scene: SceneType, with sceneCoordinator: SceneCoordinator) -> UIViewController
@@ -71,10 +75,9 @@ extension SceneCoordinator {
     }
     
     @discardableResult
-    public func present(_ scene: SceneType, from viewController: UIViewController, animated: Bool, customizationClosure: ((UIViewController) -> Void)? = nil) -> Completable {
+    public func present(_ scene: SceneType, from viewController: UIViewController, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let nextViewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
-        customizationClosure?(nextViewController)
         viewController.present(nextViewController, animated: animated, completion: {
             subject.onCompleted()
         })
@@ -107,7 +110,7 @@ extension SceneCoordinator {
     }
     
     private func wrappedViewController(_ viewController: UIViewController) -> UIViewController {
-        if viewController is UINavigationController || viewController is UITabBarController || viewController is UISplitViewController {
+        if viewController is UnwrappedViewController {
             return viewController
         }
         return navigationControllerClass.init(rootViewController: viewController)
