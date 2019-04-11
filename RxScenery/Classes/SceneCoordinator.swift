@@ -1,6 +1,6 @@
 //
 //  SceneCoordinator.swift
-//  Scenery
+//  RxScenery
 //
 //  Created by Martin Daum on 08.06.18.
 //  Copyright © 2018 Waterlytics. All rights reserved.
@@ -94,14 +94,35 @@ extension SceneCoordinator {
         if animated && window.rootViewController != nil, let snapshot = self.window.snapshotView(afterScreenUpdates: true) {
             nextViewController.view.addSubview(snapshot)
             
-            UIView.animate(withDuration: 0.3, animations: {
+            self.window.rootViewController = nextViewController
+            
+            UIView.animate(withDuration: 0.5, animations: {
                 snapshot.alpha = 0
             }, completion: { _ in
-                self.window.rootViewController = nextViewController
                 snapshot.removeFromSuperview()
+                subject.onCompleted()
             })
         } else {
             window.rootViewController = nextViewController
+            subject.onCompleted()
+        }
+        
+        return subject.asObservable()
+            .take(1)
+            .ignoreElements()
+    }
+    
+    public func showInWindow(_ scene: SceneType) -> Completable {
+        let subject = PublishSubject<Void>()
+        let viewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let rootViewController = UIViewController()
+        rootViewController.view.backgroundColor = .clear
+        window.rootViewController = rootViewController
+        window.windowLevel = .normal
+        window.makeKeyAndVisible()
+        rootViewController.present(viewController, animated: true) {
+            subject.onCompleted()
         }
         
         return subject.asObservable()
