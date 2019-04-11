@@ -1,9 +1,9 @@
 PODS:
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxScenery (1.0.1):
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxScenery (1.0.5):
     - RxCocoa (~> 4.0)
-  - RxSwift (4.3.1)
+  - RxSwift (4.5.0)
 
 DEPENDENCIES:
   - RxScenery (from `../`)
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxScenery: 4f79f26a95e13e874558649f0628169986ac75fb
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxScenery: 65bf24f927ff99e413dde0efade8dd0793d07633
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
 PODFILE CHECKSUM: 803738a8069df26c8ea1e268ea366adbdc1690bb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

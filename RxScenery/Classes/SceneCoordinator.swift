@@ -28,6 +28,13 @@ public enum SceneTransitionError: Error {
     case popNotPossible
 }
 
+public struct PresentationOptions {
+    public var transitioningDelegate: UIViewControllerTransitioningDelegate?
+    public var modalTransitionStyle: UIModalTransitionStyle?
+    public var modalPresentationStyle: UIModalPresentationStyle?
+    public var modalPresentationCapturesStatusBarAppearance: Bool?
+}
+
 public final class SceneCoordinator {
     private let window: UIWindow
     private let sceneCreator: SceneCreatorType
@@ -55,7 +62,7 @@ extension SceneCoordinator {
 
 extension SceneCoordinator {
     @discardableResult
-    public func push(_ scene: SceneType, from viewController: UIViewController, animated: Bool) -> Completable {
+    public func push(_ scene: SceneType, from viewController: UIViewController, animated: Bool = true) -> Completable {
         let subject = PublishSubject<Void>()
         let nextViewController = sceneCreator.createViewController(for: scene, with: self)
         
@@ -75,9 +82,26 @@ extension SceneCoordinator {
     }
     
     @discardableResult
-    public func present(_ scene: SceneType, from viewController: UIViewController, animated: Bool) -> Completable {
+    public func present(_ scene: SceneType, from viewController: UIViewController, animated: Bool = true, options: PresentationOptions? = nil) -> Completable {
         let subject = PublishSubject<Void>()
         let nextViewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
+        
+        if let modalPresentationStyle = options?.modalPresentationStyle {
+            nextViewController.modalPresentationStyle = modalPresentationStyle
+        }
+        
+        if let modalPresentationCapturesStatusBarAppearance = options?.modalPresentationCapturesStatusBarAppearance {
+            nextViewController.modalPresentationCapturesStatusBarAppearance = modalPresentationCapturesStatusBarAppearance
+        }
+        
+        if let modalTransitionStyle = options?.modalTransitionStyle {
+            nextViewController.modalTransitionStyle = modalTransitionStyle
+        }
+        
+        if let transitioningDelegate = options?.transitioningDelegate {
+            nextViewController.transitioningDelegate = transitioningDelegate
+        }
+        
         viewController.present(nextViewController, animated: animated, completion: {
             subject.onCompleted()
         })
@@ -87,7 +111,7 @@ extension SceneCoordinator {
     }
     
     @discardableResult
-    public func changeRoot(to scene: SceneType, animated: Bool) -> Completable {
+    public func changeRoot(to scene: SceneType, animated: Bool = true) -> Completable {
         let subject = PublishSubject<Void>()
         let nextViewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
         
@@ -104,24 +128,6 @@ extension SceneCoordinator {
             })
         } else {
             window.rootViewController = nextViewController
-            subject.onCompleted()
-        }
-        
-        return subject.asObservable()
-            .take(1)
-            .ignoreElements()
-    }
-    
-    public func showInWindow(_ scene: SceneType) -> Completable {
-        let subject = PublishSubject<Void>()
-        let viewController = wrappedViewController(sceneCreator.createViewController(for: scene, with: self))
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = UIViewController()
-        rootViewController.view.backgroundColor = .clear
-        window.rootViewController = rootViewController
-        window.windowLevel = .normal
-        window.makeKeyAndVisible()
-        rootViewController.present(viewController, animated: true) {
             subject.onCompleted()
         }
         
