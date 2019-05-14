@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RxScenery'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
 	s.summary 				 = 'Scene transition library written in Swift'
   s.homepage         = 'https://github.com/martindaum/RxScenery'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.source_files = 'RxScenery/Classes/**/*'
   
-  s.dependency 'RxCocoa', '~> 4.0'
+  s.dependency 'RxCocoa', '~> 5.0'
 end
