@@ -29,10 +29,17 @@ public enum SceneTransitionError: Error {
 }
 
 public struct PresentationOptions {
-    public var transitioningDelegate: UIViewControllerTransitioningDelegate?
-    public var modalTransitionStyle: UIModalTransitionStyle?
-    public var modalPresentationStyle: UIModalPresentationStyle?
-    public var modalPresentationCapturesStatusBarAppearance: Bool?
+    public let transitioningDelegate: UIViewControllerTransitioningDelegate?
+    public let modalTransitionStyle: UIModalTransitionStyle?
+    public let modalPresentationStyle: UIModalPresentationStyle?
+    public let modalPresentationCapturesStatusBarAppearance: Bool?
+    
+    public init(transitioningDelegate: UIViewControllerTransitioningDelegate? = nil, modalTransitionStyle: UIModalTransitionStyle? = nil, modalPresentationStyle: UIModalPresentationStyle? = nil, modalPresentationCapturesStatusBarAppearance: Bool? = nil) {
+        self.transitioningDelegate = transitioningDelegate
+        self.modalTransitionStyle = modalTransitionStyle
+        self.modalPresentationStyle = modalPresentationStyle
+        self.modalPresentationCapturesStatusBarAppearance = modalPresentationCapturesStatusBarAppearance
+    }
 }
 
 public final class SceneCoordinator {
