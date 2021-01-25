@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RxScenery'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
 	s.summary 				 = 'Scene transition library written in Swift'
   s.homepage         = 'https://github.com/martindaum/RxScenery'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
