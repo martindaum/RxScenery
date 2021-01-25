@@ -75,7 +75,7 @@ extension SceneCoordinator {
         
         guard let navigationController = viewController.navigationController else {
             subject.onError(SceneTransitionError.noNavigationController)
-            return subject.asObservable().ignoreElements()
+            return subject.asObservable().ignoreElements().asCompletable()
         }
         
         _ = navigationController.rx.delegate
@@ -86,6 +86,7 @@ extension SceneCoordinator {
         return subject.asObservable()
             .take(1)
             .ignoreElements()
+            .asCompletable()
     }
     
     @discardableResult
@@ -115,6 +116,7 @@ extension SceneCoordinator {
         return subject.asObservable()
             .take(1)
             .ignoreElements()
+            .asCompletable()
     }
     
     @discardableResult
@@ -141,6 +143,7 @@ extension SceneCoordinator {
         return subject.asObservable()
             .take(1)
             .ignoreElements()
+            .asCompletable()
     }
     
     private func wrappedViewController(_ viewController: UIViewController) -> UIViewController {
@@ -165,6 +168,7 @@ extension SceneCoordinator {
         return subject.asObservable()
             .take(1)
             .ignoreElements()
+            .asCompletable()
     }
     
     @discardableResult
@@ -172,7 +176,7 @@ extension SceneCoordinator {
         let subject = PublishSubject<Void>()
         guard let navigationController = viewController.navigationController else {
             subject.onError(SceneTransitionError.popNotPossible)
-            return subject.asObservable().ignoreElements()
+            return subject.asObservable().ignoreElements().asCompletable()
         }
         _ = navigationController.rx.delegate
             .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
@@ -180,10 +184,10 @@ extension SceneCoordinator {
             .bind(to: subject)
         guard navigationController.popViewController(animated: animated) != nil else {
             subject.onError(SceneTransitionError.popNotPossible)
-            return subject.asObservable().ignoreElements()
+            return subject.asObservable().ignoreElements().asCompletable()
         }
         return subject.asObservable()
             .take(1)
-            .ignoreElements()
+            .ignoreElements().asCompletable()
     }
 }

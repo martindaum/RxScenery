@@ -1,16 +1,20 @@
 PODS:
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxScenery (1.0.5):
-    - RxCocoa (~> 4.0)
-  - RxSwift (4.5.0)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxScenery (1.0.8):
+    - RxCocoa (~> 6.0)
+  - RxSwift (6.0.0)
 
 DEPENDENCIES:
   - RxScenery (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - RxCocoa
+    - RxRelay
     - RxSwift
 
 EXTERNAL SOURCES:
@@ -18,10 +22,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxScenery: 65bf24f927ff99e413dde0efade8dd0793d07633
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxScenery: 544a60c751b4fcc3eb334337b8b7eac90aa21835
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
 
-PODFILE CHECKSUM: 803738a8069df26c8ea1e268ea366adbdc1690bb
+PODFILE CHECKSUM: b40cd1f469176a84845c2f54e82dc515bc3bd846
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.10.1
