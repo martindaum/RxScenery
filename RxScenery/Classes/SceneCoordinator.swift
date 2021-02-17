@@ -191,3 +191,35 @@ extension SceneCoordinator {
             .ignoreElements().asCompletable()
     }
 }
+
+// MARK: - embed
+
+extension SceneCoordinator {
+
+    @discardableResult
+    public func embed(_ scene: SceneType, into view: UIView, of parent: UIViewController) -> Single<UIViewController> {
+        let subject = PublishSubject<UIViewController>()
+
+        let nextViewController = sceneCreator.createViewController(for: scene, with: self)
+        parent.addChild(nextViewController)
+        nextViewController.view.frame = view.bounds
+        view.addSubview(nextViewController.view)
+        nextViewController.didMove(toParent: parent)
+
+        subject.onNext(nextViewController)
+        return subject.asSingle()
+    }
+
+    @discardableResult
+    public func remove(_ viewController: UIViewController) -> Completable {
+        let subject = PublishSubject<Void>()
+
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+
+        return subject.asObservable()
+            .take(1)
+            .ignoreElements()
+    }
+}
